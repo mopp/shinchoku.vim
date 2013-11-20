@@ -1,6 +1,9 @@
-## sinchoku.vim
+## shinchoku.vim
 How is the progress ?
 
 
 ## installation
-NeoBundle 'mopp/sinchoku.vim'
+NeoBundle 'mopp/shinchoku.vim'
+
+## option
+NeoBundle 'supermomonga/shaberu.vim'
