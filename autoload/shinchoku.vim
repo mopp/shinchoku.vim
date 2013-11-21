@@ -16,9 +16,16 @@ set cpo&vim
 
 let s:is_shaberu = exists(':ShaberuSay') == 2 ? 1 : 0
 let s:shinchoku_str = "進捗どうですか"
+let s:no_shinchoku_counter = 0
 let g:shinchoku#say_command = get(g:, 'shinchoku#say_command', '')
 
 function! shinchoku#get_shinchoku_str()
+    let s:no_shinchoku_counter += 1
+
+    if s:no_shinchoku_counter % 2 == 0
+        let s:shinchoku_str .= '!'
+    endif
+
     return s:shinchoku_str
 endfunction
 
