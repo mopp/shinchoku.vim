@@ -15,7 +15,8 @@ set cpo&vim
 
 
 let s:is_shaberu = exists(':ShaberuSay') == 2 ? 1 : 0
-let s:shinchoku_str = "進捗どうですか"
+let s:shinchoku_command = 'ShaberuSay'
+let s:shinchoku_str = '進捗どうですか'
 let s:no_shinchoku_counter = 0
 let g:shinchoku#say_command = get(g:, 'shinchoku#say_command', '')
 
@@ -36,10 +37,10 @@ function! shinchoku#ask_shinchoku()
 
     if g:shinchoku#say_command != ''
         let store = g:shaberu_user_define_say_command
-        ShaberuSay "進捗どうですか"
+        execute s:shinchoku_command s:shinchoku_str
         let g:shaberu_user_define_say_command = store
     else
-        ShaberuSay "進捗どうですか"
+        execute s:shinchoku_command s:shinchoku_str
     endif
 endfunction
 
