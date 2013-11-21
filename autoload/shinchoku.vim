@@ -14,17 +14,26 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 
-let s:is_shaberu = neobundle#is_installed('shaberu.vim') ? 1 : 0
+let s:is_shaberu = exists(':ShaberuSay') == 2 ? 1 : 0
+let s:shinchoku_str = "進捗どうですか"
+let g:shinchoku#say_command = get(g:, 'shinchoku#say_command', '')
 
-function! shinchoku#echo_shinchoku()
-    let store = get(g:, 'shaberu_user_define_say_command', 'say -v Kyoko "%%TEXT%%"')
-    let g:shaberu_user_define_say_command = 'say -v Kyoko "%%TEXT%%"'
-    if s:is_shaberu == 1
+function! shinchoku#get_shinchoku_str()
+    return s:shinchoku_str
+endfunction
+
+function! shinchoku#ask_shinchoku()
+    if s:is_shaberu != 1
+        return
+    endif
+
+    if g:shinchoku#say_command != ''
+        let store = g:shaberu_user_define_say_command
+        ShaberuSay "進捗どうですか"
+        let g:shaberu_user_define_say_command = store
+    else
         ShaberuSay "進捗どうですか"
     endif
-    let g:shaberu_user_define_say_command = store
-
-    return "進捗どうですか"
 endfunction
 
 
