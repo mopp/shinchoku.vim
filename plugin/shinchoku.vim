@@ -16,7 +16,7 @@ set cpo&vim
 
 augroup shinchoku
     autocmd!
-    autocmd CursorHold,CursorHoldI * echomsg shinchoku#get_shinchoku_str()
+    autocmd CursorHold,CursorHoldI * call shinchoku#echo_shinchoku()
     autocmd CursorHold,CursorHoldI * call shinchoku#ask_shinchoku()
 augroup END
 
