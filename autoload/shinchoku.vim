@@ -36,6 +36,7 @@ function! shinchoku#ask_shinchoku()
 
     if g:shinchoku#say_command != ''
         let store = g:shaberu_user_define_say_command
+        let g:shaberu_user_define_say_command = g:shinchoku#say_command
         call s:say_shinchoku()
         let g:shaberu_user_define_say_command = store
     else
